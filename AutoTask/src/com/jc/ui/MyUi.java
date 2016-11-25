@@ -1,17 +1,27 @@
 package com.jc.ui;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
+import javax.swing.JSpinner;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 public class MyUi extends JFrame{
 	private static final long serialVersionUID = -1513207114652328568L;
 	public MyUi() {
-		//  FlowLayout   流式布局  按顺序排列 空间不足时换行
-		//  BorderLayout  按东 西 南 北 中 排列
-		//  GridLayout   可以设置行列   按行列排
-		//  JTable       表格布局  设置行列
-		//  GridBagLayout 复杂布局
+		//1、  FlowLayout   流式布局  按顺序排列 空间不足时换行
+		//2、  BorderLayout  按东 西 南 北 中 排列
+		//3、  GridLayout   可以设置行列   按行列排
+		//4、  JTable       表格布局  设置行列
+		//5、  GridBagLayout 复杂布局
 		this.getContentPane().setLayout(null);
 		//JTable table=new JTable(5, 5);
 		/*JButton button=new JButton();
@@ -53,6 +63,103 @@ public class MyUi extends JFrame{
 		return label;
 	}
 	
+	
+	/**
+	 * @return  JPasswordField
+	 */
+	public JPasswordField getPasswordFild(){
+		JPasswordField passwordField=new JPasswordField(23);
+		passwordField.setBounds(0, 0, 50, 100);
+		return passwordField;
+	}
+	
+	/**
+	 * @return  JTextField
+	 */
+	public JTextField getTextField(){
+		JTextField textField=new JTextField(23);
+		textField.setBounds(0, 0, 50, 100);
+		return textField;
+	}
+	
+	
+	/**
+	 * @param datas
+	 * @return  JList
+	 */
+	public JList<String>  getList(String [] datas){
+		JList<String> list=new JList<String>();
+		list.setBounds(0, 0, 500, 500);
+		list.setListData(datas);
+		return list;
+	}
+	
+	/**
+	 * @param text
+	 * @return  JCheckBox
+	 */
+	public JCheckBox getCheckBox(String text){
+		JCheckBox checkBox=new JCheckBox();
+		checkBox.setText(text);
+		return checkBox;
+	}
+	
+	/**
+	 * @return  JMenu
+	 */
+	public JMenu getMenu(){
+		JMenu menu=new JMenu();
+		JMenuItem item=new JMenuItem("打开");
+		menu.add(item);
+		return menu;
+	}
+	
+	
+	/**
+	 * @return JButton
+	 */
+	public JButton getButton(){
+		JButton button=new JButton();
+		button.setText("button");
+		button.setBounds(0, 0, 50, 100);
+		return button;
+	}
+	
+	/**
+	 * @return JTextArea
+	 */
+	public JTextArea getTextArea(){
+		JTextArea area=new JTextArea();
+		area.setBounds(0, 0, 500, 100);
+		return area;
+	}
+	
+	/**
+	 * @return  JPanel
+	 */
+	public JPanel getPanel(){
+		JPanel panel=new JPanel();
+		return panel;
+	}
+	
+	/**
+	 * @return  JRadioButton
+	 */
+	public JRadioButton getRadioButton(){
+		JRadioButton radioButton=new JRadioButton();
+		radioButton.setText("button");
+		radioButton.setBounds(0, 0, 20, 20);
+		return radioButton;
+	}
+	
+	/**
+	 * @return  JSpinner
+	 */
+	public JSpinner getSpinner(){
+		JSpinner spinner=new JSpinner();
+		spinner.setBounds(0, 0, 500, 10);
+		return spinner;
+	}
 	
 
 }

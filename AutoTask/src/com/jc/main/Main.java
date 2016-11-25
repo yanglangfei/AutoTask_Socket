@@ -17,11 +17,10 @@ public class Main {
 			SocketUtils utils=SocketUtils.getInstance();
 			while (true) {
 				Socket socket=utils.accept();
-				System.out.println("连接成功："+socket.getLocalAddress());
+				System.out.println("连接成功："+socket.getPort());
 				soMap.put(socket.getLocalPort(), socket);
 				new ReadHandle(soMap,socket).start();
 				new WriteHandle(soMap,socket).start();
-				
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

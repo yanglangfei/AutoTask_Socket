@@ -7,29 +7,23 @@ import java.net.Socket;
 import java.util.Map;
 
 public class ReadHandle extends Thread{
-	private DataInputStream dis;
 	private OnReceiverMsg onReceiverMsg;
-	
-	
-
-	public OnReceiverMsg getOnReceiverMsg() {
-		return onReceiverMsg;
-	}
-
+	private InputStream is;
 	public void setOnReceiverMsg(OnReceiverMsg onReceiverMsg) {
 		this.onReceiverMsg = onReceiverMsg;
 	}
 
 	public ReadHandle(Map<Integer, Socket> soMap, Socket socket) throws IOException {
-		InputStream is=socket.getInputStream();
-		 dis=new DataInputStream(is);
+		 is=socket.getInputStream();
 	}
 
 	@Override
 	public void run() {
+		DataInputStream dis = null;
 		try {
+			 dis=new DataInputStream(is);
 			String str=dis.readUTF();
-			if(onReceiverMsg!=null){
+			if(onReceiverMsg!=null&&str.length()>0){
 				onReceiverMsg.onSuccess(str);
 			}
 		} catch (IOException e) {
