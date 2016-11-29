@@ -35,6 +35,9 @@ public class AutoUtils {
 	 * @return 点击左键
 	 */
 	public void clickLeftMousePoint(int x,int y,int dely){
+		if(dely<=0){
+			robot.setAutoDelay(100);
+		}
 		robot.mouseMove(x, y);
 		robot.mousePress(InputEvent.BUTTON1_MASK);
 		robot.delay(100);
@@ -49,6 +52,9 @@ public class AutoUtils {
 	 * @return 点击右键
 	 */
 	public void clickRightMousePoint(int x,int y,int dely){
+		if(dely<=0){
+			robot.setAutoDelay(100);
+		}
 		robot.mouseMove(x, y);
 		robot.mousePress(InputEvent.BUTTON3_MASK);
 		robot.delay(100);
@@ -64,6 +70,9 @@ public class AutoUtils {
 	 * @return 执行键盘输入事件
 	 */
 	public void clickKeyPoint(int x,int y,int dely,int keys[]){
+		if(dely<=10){
+			robot.setAutoDelay(100);
+		}
 		robot.mouseMove(x, y);
 		for(int i=0;i<keys.length;i++){
 			robot.keyPress(keys[i]);
@@ -82,6 +91,9 @@ public class AutoUtils {
 		if(distance<=0){
 			return ;
 		}
+		if(dery<=0){
+			robot.setAutoDelay(100);
+		}
 		robot.mouseWheel(distance);
 		robot.delay(dery);
 	}
@@ -98,6 +110,9 @@ public class AutoUtils {
 	 * @throws IOException
 	 */
 	public void capturePoint(int x,int y,int width,int height,String format,String savePath,int dery) throws IOException{
+		if(dery<=0){
+			robot.setAutoDelay(100);
+		}
 		BufferedImage image=robot.createScreenCapture(new Rectangle(x, y, width, height));
 		File file=new File(savePath+UUID.randomUUID().toString()+"."+format);
 		ImageIO.write(image, format, file);
@@ -112,6 +127,10 @@ public class AutoUtils {
 	 * @throws IOException
 	 */
 	public void captureFullScreen(String format,String savePath,int dery) throws IOException{
+		//获取屏幕尺寸
+		if(dery<=0){
+			robot.setAutoDelay(100);
+		}
 		Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
 		BufferedImage image=robot.createScreenCapture(new Rectangle(size));
 		File file=new File(savePath+UUID.randomUUID().toString()+"."+format);
@@ -126,12 +145,14 @@ public class AutoUtils {
 	 * @return 执行移动光标事件
 	 */
 	public void moveCurser(int x,int y,int dery){
-		if(dery==0){
+		if(dery<=0){
 			robot.setAutoDelay(100);
 		}
 		robot.mouseMove(x, y);
 		robot.delay(dery);
 	}
+	
+	
 	
 	
 	

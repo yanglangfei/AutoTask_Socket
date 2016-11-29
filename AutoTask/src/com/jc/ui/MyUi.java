@@ -60,9 +60,11 @@ public class MyUi extends JFrame{
 		this.add(list);
 		setVisible(true);
 		this.setSize(500, 500);
+		//设置永远置顶  其他软件界面不会覆盖
+		this.setAlwaysOnTop(true);
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		//设置JFrame 状态  最大化/最小化
-	//	this.setState(NORMAL);
+		this.setState(NORMAL);
 	}
 	
 	public static void main(String[] args) {
@@ -178,5 +180,10 @@ public class MyUi extends JFrame{
 		return spinner;
 	}
 	
-
+	public JCheckBox getBox(){
+		JCheckBox box=new JCheckBox();
+		box.setText("");
+		return box;
+	}
+	
 }
