@@ -16,12 +16,11 @@ public class AutoUtils {
 	private AutoUtils(){
 		
 	}
-	
 	/**
 	 * @return    获取自动化对象
 	 * @throws AWTException
 	 */
-	public  static AutoUtils getInstance() throws AWTException{
+	public  synchronized static AutoUtils getInstance() throws AWTException{
 		if(auto==null){
 			auto=new AutoUtils();
 			robot=new Robot();
