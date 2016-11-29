@@ -1,5 +1,6 @@
 package com.jc.utils;
 import java.awt.AWTException;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.Robot;
@@ -9,6 +10,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
+
 import javax.imageio.ImageIO;
 public class AutoUtils {
 	private static AutoUtils auto;
@@ -152,10 +154,36 @@ public class AutoUtils {
 		robot.delay(dery);
 	}
 	
+	/**
+	 * @param x
+	 * @param y
+	 * @param keys
+	 * @param dery
+	 * @return 执行鼠标点击事件集合
+	 */
+	public void clickMouse(int x,int y,int keys[],int dery){
+		if(dery<=0){
+			robot.setAutoDelay(100);
+		}
+		robot.mouseMove(x, y);
+		for(int i=0;i<keys.length;i++){
+			int key = keys[i];
+			robot.keyPress(key);
+			robot.delay(100);
+			robot.keyRelease(key);
+		}
+		robot.delay(dery);
+	}
 	
 	
-	
-	
-	
+	/**
+	 * @param x
+	 * @param y
+	 * @return  获取x,y坐标RGB 色值
+	 */
+	public int getColor(int x,int y){
+		Color color = robot.getPixelColor(x, y);
+		return color.getRGB();
+	}
 
 }
