@@ -1,6 +1,7 @@
 package com.jc.service;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.util.Map;
@@ -18,6 +19,8 @@ public class WriteHandle extends Thread{
 		this.socket=socket;
 		OutputStream os=socket.getOutputStream();
 		dos=new DataOutputStream(os);
+		ObjectOutputStream oos=new ObjectOutputStream(os);
+		oos.writeObject("");
 	}
 
 	@Override

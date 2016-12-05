@@ -3,6 +3,7 @@ package com.jc.service;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.ObjectInputStream;
 import java.net.Socket;
 import java.util.Map;
 
@@ -19,10 +20,11 @@ public class ReadHandle extends Thread{
 
 	@Override
 	public void run() {
-		DataInputStream dis = null;
+		ObjectInputStream ois=null;
 		try {
-			 dis=new DataInputStream(is);
-			String str=dis.readUTF();
+			 ois=new ObjectInputStream(is);
+			 //dis=new DataInputStream(is);
+			String str=ois.readUTF();
 			if(onReceiverMsg!=null&&str.length()>0){
 				onReceiverMsg.onSuccess(str);
 			}
@@ -30,7 +32,9 @@ public class ReadHandle extends Thread{
 			e.printStackTrace();
 		}finally{
 			try {
-				dis.close();
+				if(ois!=null){
+					ois.close();
+				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
